@@ -1,0 +1,36 @@
+lzc-sdk-version: "0.1"
+name: 微信客户端
+package: in.zhaoj.wechat
+version: 0.0.1
+description: 微信客户端，打包进VNC，直接用
+homepage: https://github.com/glzjin/docker-wechat
+author: RICwang
+application:
+  subdomain: wechat
+  background_task: false
+  multi_instance: true
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  routes:
+    - /=http://wechat.in.zhaoj.wechat.lzcapp:5800/
+  ingress:
+    - protocol: tcp
+      port: 5800
+      service: wechat
+    - protocol: tcp
+      port: 5900
+      service: wechat
+services:
+  wechat:
+    image: crpi-3y0s0ug8uy5x8vwi.cn-hangzhou.personal.cr.aliyuncs.com/glzjinglzjin-lzc/wechat:2e96d390a86669925c9a1137f067215d
+    environment:
+      - LANG=zh_CN.UTF-8
+      - USER_ID=0
+      - GROUP_ID=0
+      - WEB_AUDIO=1
+      - TZ=Asia/Shanghai
+    binds:
+      - /lzcapp/var/.xwechat:/root/.xwechat
+      - /lzcapp/var/xwechat_files:/root/xwechat_files
+      - /lzcapp/run/mnt/home/WeChatDownloads:/root/downloads

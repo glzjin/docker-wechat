@@ -1,0 +1,42 @@
+{
+  "name": "微信客户端",
+  "package": "in.zhaoj.wechat",
+  "description": "微信客户端，打包进VNC，直接用",
+  "homepage": "https://github.com/glzjin/docker-wechat",
+  "author": "RICwang",
+  "app_features": [
+    "multi_instance"
+  ],
+  "subdomain": "wechat",
+  "version": "0.0.1",
+  "iconPath": "下载 (6).png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [],
+  "lastRouteType": "http",
+  "port_mappings": {
+    "wechat_5800_5800": {
+      "use": true,
+      "type": "port",
+      "protocol": "tcp"
+    },
+    "wechat_5900_5900": {
+      "use": true,
+      "type": "port",
+      "protocol": "tcp"
+    }
+  },
+  "lastHttpPath": "/",
+  "lastHttpService": "wechat",
+  "lastHttpPort": "5800",
+  "lastHttpTargetPath": "/",
+  "build_wechat": {
+    "build": true
+  },
+  "wechat_volume_/root/.xwechat_action": "emptyDir",
+  "wechat_volume_/root/.xwechat_location": "app_data",
+  "wechat_volume_/root/xwechat_files_action": "emptyDir",
+  "wechat_volume_/root/xwechat_files_location": "app_data",
+  "wechat_volume_/root/downloads_action": "emptyDir",
+  "wechat_volume_/root/downloads_location": "user_data",
+  "wechat_volume_/root/downloads_subdir": "WeChatDownloads"
+}
